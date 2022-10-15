@@ -42,4 +42,13 @@ public class TicketController {
         else
             return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
     }
+
+    @DeleteMapping("/ConfirmTicket")
+    public ResponseEntity<?> confirmJO(@ModelAttribute Ticket ticket) {
+        Integer result = ticketService.confirmTicket(ticket);
+        if (result == 1)
+            return ResponseEntity.ok(HttpStatus.OK);
+        else
+            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
+    }
 }

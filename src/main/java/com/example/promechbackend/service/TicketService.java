@@ -28,4 +28,8 @@ public class TicketService {
     public Integer updateTicket(Ticket ticket) {
         return ticketRepository.updateTicket(ticket.getTicketID(), ticket.getPhone(), ticket.getName(), ticket.getPassword());
     }
+
+    public Integer confirmTicket(Ticket ticket) {
+        return ticketRepository.confirmTicket(ticket.getTicketID());
+    }
 }

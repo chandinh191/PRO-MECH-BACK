@@ -29,4 +29,8 @@ public interface TicketRepository extends JpaRepository<TicketEntity, Integer> {
     Integer updateTicket(int ticketID, int phone, String name, String password);
 
 
+    @Modifying
+    @Query(value = "UPDATE Ticket SET Status = 0 WHERE TicketID = :ticketID", nativeQuery = true)
+    @Transactional
+    Integer confirmTicket(int ticketID);
 }
