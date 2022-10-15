@@ -19,14 +19,14 @@ public interface TicketRepository extends JpaRepository<TicketEntity, Integer> {
     List<TicketEntity> getAll();
 
     @Modifying
-    @Query(value = "INSERT INTO Ticket VALUES (:phone, :name, :password, 1)", nativeQuery = true)
+    @Query(value = "INSERT INTO Ticket VALUES (:phone, :name, :password, 1, :description, :service)", nativeQuery = true)
     @Transactional
-    int createTicket(int phone, String name, String password);
+    int createTicket(int phone, String name, String password, String description, String service);
 
     @Modifying
-    @Query(value ="UPDATE Ticket SET Phone = :phone, Name = :name, Password = :password WHERE TicketID = :ticketID", nativeQuery = true)
+    @Query(value ="UPDATE Ticket SET Phone = :phone, Name = :name, Password = :password, Description = :description, Service = :service WHERE TicketID = :ticketID", nativeQuery = true)
     @Transactional
-    Integer updateTicket(int ticketID, int phone, String name, String password);
+    Integer updateTicket(int ticketID, int phone, String name, String password, String description, String service);
 
 
     @Modifying

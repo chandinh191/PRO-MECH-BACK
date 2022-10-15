@@ -22,11 +22,11 @@ public class TicketService {
     }
 
     public Integer createTicket(Ticket ticket) {
-        return ticketRepository.createTicket(ticket.getPhone(), ticket.getName(), ticket.getPassword());
+        return ticketRepository.createTicket(ticket.getPhone(), ticket.getName(), ticket.getPassword(), ticket.getDescription(), ticket.getService());
     }
 
     public Integer updateTicket(Ticket ticket) {
-        return ticketRepository.updateTicket(ticket.getTicketID(), ticket.getPhone(), ticket.getName(), ticket.getPassword());
+        return ticketRepository.updateTicket(ticket.getTicketID(), ticket.getPhone(), ticket.getName(), ticket.getPassword(), ticket.getDescription(), ticket.getService());
     }
 
     public Integer confirmTicket(Ticket ticket) {

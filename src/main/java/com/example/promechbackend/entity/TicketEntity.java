@@ -33,4 +33,11 @@ public class TicketEntity {
     @Column(name = "Status")
     private int status;
 
+    @Column(name = "Description")
+    private String description;
+
+    @Column(name = "Service")
+    private String service;
+
+
 }
