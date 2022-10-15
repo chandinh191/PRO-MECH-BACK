@@ -26,12 +26,15 @@ public class TicketController {
     }
 
     @PostMapping("/CreateTicket")
-    public ResponseEntity<?> createTicket(@ModelAttribute Ticket ticket) {
-        Integer result = ticketService.createTicket(ticket);
-        if (result == 1)
-            return ResponseEntity.ok(HttpStatus.OK);
-        else
-            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
+    public ResponseEntity<?> createTicket(@RequestBody String body) {
+        System.out.println(body);
+        return ResponseEntity.ok(HttpStatus.OK);
+
+//        Integer result = ticketService.createTicket(ticket);
+//        if (result == 1)
+//            return ResponseEntity.ok(HttpStatus.OK);
+//        else
+//            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
     }
 
     @PutMapping("/UpdateTicket")
