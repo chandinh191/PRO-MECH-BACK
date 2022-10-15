@@ -16,6 +16,6 @@ public class TechnicalStaffController {
     @PostMapping("/Login")
     public TechnicalStaffEntity login(@ModelAttribute Account acc){
         TechnicalStaffEntity result = technicalStaffService.login(acc);
-                return result;
+        return result;
     }
 }

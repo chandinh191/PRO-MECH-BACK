@@ -1,5 +1,6 @@
 package com.example.promechbackend.service;
 
+import com.example.promechbackend.dto.Ticket;
 import com.example.promechbackend.entity.TicketEntity;
 import com.example.promechbackend.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,18 @@ public class TicketService {
     TicketRepository ticketRepository;
 
     public TicketEntity getTicketByPhone(int phone) {
-        return ticketRepository.findById(phone).get();
+        return ticketRepository.getByPhone(phone);
     }
 
     public List<TicketEntity> getAll() {
-        return ticketRepository.findAll();
+        return ticketRepository.getAll();
+    }
+
+    public Integer createTicket(Ticket ticket) {
+        return ticketRepository.createTicket(ticket.getPhone(), ticket.getName(), ticket.getPassword());
+    }
+
+    public Integer updateTicket(Ticket ticket) {
+        return ticketRepository.updateTicket(ticket.getTicketID(), ticket.getPhone(), ticket.getName(), ticket.getPassword());
     }
 }

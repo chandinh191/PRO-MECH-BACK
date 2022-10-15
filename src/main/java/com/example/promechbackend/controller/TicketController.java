@@ -1,12 +1,12 @@
 package com.example.promechbackend.controller;
 
+import com.example.promechbackend.dto.Ticket;
 import com.example.promechbackend.entity.TicketEntity;
 import com.example.promechbackend.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,12 +16,30 @@ public class TicketController {
     @Autowired
     TicketService ticketService;
     @GetMapping("/{phone}")
-    TicketEntity getTicketByPhone(@PathVariable int phone){
+    public TicketEntity getTicketByPhone(@PathVariable int phone){
         return ticketService.getTicketByPhone(phone);
     }
 
     @GetMapping("/ALL")
-    List<TicketEntity> getTicketByPhone(){
+    public List<TicketEntity> getTicketByPhone(){
         return ticketService.getAll();
+    }
+
+    @PostMapping("/CreateTicket")
+    public ResponseEntity<?> createTicket(@ModelAttribute Ticket ticket) {
+        Integer result = ticketService.createTicket(ticket);
+        if (result == 1)
+            return ResponseEntity.ok(HttpStatus.OK);
+        else
+            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
+    }
+
+    @PutMapping("/UpdateTicket")
+    public ResponseEntity<?> updateJO(@ModelAttribute Ticket ticket) {
+        Integer result = ticketService.updateTicket(ticket);
+        if (result == 1)
+            return ResponseEntity.ok(HttpStatus.OK);
+        else
+            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
     }
 }
