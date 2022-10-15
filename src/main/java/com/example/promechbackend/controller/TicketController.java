@@ -27,7 +27,10 @@ public class TicketController {
 
     @PostMapping("/CreateTicket")
     public ResponseEntity<?> createTicket(@RequestBody String body) {
-        System.out.println(body);
+        //System.out.println();
+
+        ticketService.getString(body);
+
         return ResponseEntity.ok(HttpStatus.OK);
 
 //        Integer result = ticketService.createTicket(ticket);

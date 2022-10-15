@@ -32,4 +32,82 @@ public class TicketService {
     public Integer confirmTicket(Ticket ticket) {
         return ticketRepository.confirmTicket(ticket.getTicketID());
     }
+
+    public void getString (String body){
+        System.out.println(body + "\n");
+        int i;
+        Ticket t = new Ticket();
+
+            i = body.indexOf("name");
+            i++;
+            while(i<body.length() && body.charAt(i)!='"') i++;
+            int temp=i;
+            i++;
+            while(i<body.length() && body.charAt(i)!='"') i++;
+            if(i-temp > 2) {
+                System.out.println("null");
+            }
+            else {
+                i++;
+                int j=i;
+                while(i<body.length() && body.charAt(i)!='"') i++;
+                System.out.println(body.substring(j,i));
+                t.setName(body.substring(j,i));
+            }
+
+
+            i = body.indexOf("password");
+            i++;
+            while(i<body.length() && body.charAt(i)!='"') i++;
+            temp=i;
+            i++;
+            while(i<body.length() && body.charAt(i)!='"') i++;
+            if(i-temp > 2) {
+                System.out.println("null");
+            }
+            else {
+                i++;
+                int j=i;
+                while(i<body.length() && body.charAt(i)!='"') i++;
+                System.out.println(body.substring(j,i));
+                t.setPassword(body.substring(j,i));
+            }
+
+
+            i = body.indexOf("phone");
+            i++;
+            while(i<body.length() && body.charAt(i)!='"') i++;
+            temp=i;
+            i++;
+            while(i<body.length() && body.charAt(i)!='"') i++;
+            if(i-temp > 2) {
+                System.out.println("null");
+            }
+            else {
+                i++;
+                int j=i;
+                while(i<body.length() && body.charAt(i)!='"') i++;
+                System.out.println(body.substring(j,i));
+                t.setPhone(Integer.parseInt(body.substring(j,i)));
+            }
+
+
+            i = body.indexOf("description");
+            i++;
+            while(i<body.length() && body.charAt(i)!='"') i++;
+            temp=i;
+            i++;
+            while(i<body.length() && body.charAt(i)!='"') i++;
+            if(i-temp > 2) {
+                System.out.println("null");
+            }
+            else {
+                i++;
+                int j=i;
+                while(i<body.length() && body.charAt(i)!='"') i++;
+                System.out.println(body.substring(j,i));
+                t.setDescription(body.substring(j,i));
+            }
+
+    }
 }
